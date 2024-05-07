@@ -1,7 +1,7 @@
 import Input from "./utils/input";
 import Select from "./utils/select";
 
-export default function Form({valueUtils, factorUtils }) {
+export default function Form({valueUtils, mwUtils }) {
   return (
     <>
       <div className="mx-4 ">
@@ -12,7 +12,7 @@ export default function Form({valueUtils, factorUtils }) {
           </p>
 
           <div className="block my-2">
-            <Input nameId="mw" isMain utils={valueUtils}/>
+            <Input nameId="mw" isMain utils={mwUtils}/>
           </div>
 
           <p>Es: Insulina = 5734 g/mol</p>
@@ -26,7 +26,7 @@ export default function Form({valueUtils, factorUtils }) {
             </label>
 
 						<div className="flex justify-center">
-            	<Input nameId="valore" utils={factorUtils}/>
+            	<Input nameId="valore" utils={valueUtils}/>
 						</div>
           </div>
 
