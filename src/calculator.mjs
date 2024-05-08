@@ -1,14 +1,14 @@
 import unitMap from "./unitmap.mjs";
 
 
-export function createComboUnit() {
+export function createComboUnit(targetId = 'unitaPartenza') {
   const inputUnit = document.getElementById("unitaPartenza").value;
-  const outputUnit = document.getElementById("unitaArrivo").value;
-  if (inputUnit === outputUnit) {
-    throw new Error('Same conversion units were given')
-  } 
-  const unitCombo = `${inputUnit}-${outputUnit}`.toLowerCase();
-  return unitCombo
+
+  const unitToM = `${inputUnit}-m`.toLowerCase();
+  const unitToMm = `${inputUnit}-mm`.toLowerCase();
+  const unitToμm = `${inputUnit}-μm`.toLowerCase();
+
+  return [unitToM, unitToMm, unitToμm]
 }
 
 /**
@@ -17,7 +17,6 @@ export function createComboUnit() {
  * @param {number} conversionFactor 
  * @param {boolean} reverse 
  * @param {number} mwvalue 
- * @param {boolean} useMW 
  * @returns 
  */
 export function convertUnit(input, conversionFactor, reverse, mwValue, useMW) {

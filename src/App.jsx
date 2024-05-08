@@ -16,6 +16,14 @@ function App() {
   const [mResult, setMResult] = useState(0);
   const [mmResult, setMmResult] = useState(0);
   const [umResult, setUmResult] = useState(0);
+  const [isUnitM, setIsUnitM] = useState(false);
+  const [mgResult, setMgResult] = useState(0);
+  const [gResult, setGResult] = useState(0);
+  
+
+  const handleUnitChange = (newUnit) => {
+    setIsUnitM(newUnit);
+  };
 
   const calculateFnct = () => {
     let comboUnit;
@@ -52,13 +60,14 @@ function App() {
         <Form
           valueUtils={[valueToConvert, setValueToConvert]}
           mwUtils={[mw, setmw]}
+          unitUtils={[isUnitM, handleUnitChange]}
         />
         <div className="my-4 flex justify-center">
           <Btn text={"Calcola"} fnct={calculateFnct} />
         </div>
 
         <div>
-          <Result resultArray={[mResult, mmResult, umResult]}/>
+          <Result isUnitM={isUnitM} resultArray={[mResult, mmResult, umResult]}/>
         </div>
       </main>
     </>

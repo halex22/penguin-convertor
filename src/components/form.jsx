@@ -1,7 +1,9 @@
 import Input from "./utils/input";
 import Select from "./utils/select";
+import ChangeUnit from "./utils/changeUnit";
 
-export default function Form({valueUtils, mwUtils }) {
+export default function Form({valueUtils, mwUtils, unitUtils }) {
+
   return (
     <>
       <div className="mx-4 ">
@@ -18,7 +20,7 @@ export default function Form({valueUtils, mwUtils }) {
           <p>Es: Insulina = 5734 g/mol</p>
         </div>
 
-        <div className="mt-12 grid grid-cols-3">
+        <div className="mt-12 grid grid-cols-2">
 
           <div className="col-span-1">
             <label htmlFor="valore" className="block mb-1 text-center">
@@ -33,15 +35,9 @@ export default function Form({valueUtils, mwUtils }) {
 					<div className="col-span-1">
 						<label htmlFor="unitaPartenza" className="block mb-1  text-center">Unità di partenza</label>
 						<div className="flex justify-center">
-              <Select nameId="unitaPartenza"/>
+              <Select nameId="unitaPartenza" isUnitM={unitUtils[0]}/>
             </div>
-					</div>
-
-					<div className="col-span-1">
-					<label htmlFor="unitaArrivo" className="block mb-1 text-center">Unità d'arrivo</label>
-            <div className="flex justify-center">
-						  <Select  nameId="unitaArrivo"/>
-            </div>
+            <ChangeUnit utils={unitUtils}/>
 					</div>
 
         </div>
