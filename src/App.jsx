@@ -5,6 +5,7 @@ import Form from "./components/form";
 import Btn from "./components/btn";
 import { createComboUnit , convertUnit, convertBetweenMs} from "./calculator.mjs";
 import unitMap from "./unitmap.mjs";
+import Result from "./components/results";
 
 function App() {
   document.title = "Penguin Converter";
@@ -12,6 +13,9 @@ function App() {
   const [result, setResult] = useState("so far nothing...");
   const [mw, setmw] = useState(1);
   const [valueToConvert, setValueToConvert] = useState("");
+  const [mResult, setMResult] = useState(0);
+  const [mmResult, setMmResult] = useState(0);
+  const [umResult, setUmResult] = useState(0);
 
   const calculateFnct = () => {
     let comboUnit;
@@ -54,7 +58,7 @@ function App() {
         </div>
 
         <div>
-          <h3>The result is : {result} </h3>
+          <Result resultArray={[mResult, mmResult, umResult]}/>
         </div>
       </main>
     </>
