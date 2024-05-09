@@ -1,5 +1,7 @@
-export default function Result({ isUnitM, resultArray }) {
-  const [mResult, mmResult, umResult] = resultArray;
+export default function Result({ isUnitM, mResults, gResults }) {
+  const [mResult, mmResult, umResult] = mResults;
+  const [mgResult, gResult] = gResults;
+
   return (
     <>
       <p className="">The results are : </p>
@@ -7,11 +9,11 @@ export default function Result({ isUnitM, resultArray }) {
       {isUnitM ? (
         <div className="flex justify-evenly mt-2">
           <div className="flex flex-col">
-            <span>{mResult}</span>
+            <span>{mgResult}</span>
             <span className="font-bold">mg/mL</span>
           </div>
           <div className="flex flex-col">
-            <span>{mResult}</span>
+            <span>{gResult}</span>
             <span className="font-bold">g/mL</span>
           </div>
         </div>

@@ -20,7 +20,7 @@ export default function Form({valueUtils, mwUtils, unitUtils }) {
           <p>Es: Insulina = 5734 g/mol</p>
         </div>
 
-        <div className="mt-12 grid grid-cols-2">
+        <div className="mt-6 grid grid-cols-2">
 
           <div className="col-span-1">
             <label htmlFor="valore" className="block mb-1 text-center">

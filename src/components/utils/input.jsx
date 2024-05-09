@@ -15,7 +15,7 @@ export default function Input({ nameId, isMain, utils }) {
         type='number'
         name={nameId}
         value={currentValue}
-        onChange={(e) => {setCurrentValue(e.target.value); console.log(currentValue)}}
+        onChange={(e) => setCurrentValue(e.target.value)}
       />
     </>
   );

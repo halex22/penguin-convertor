@@ -3,14 +3,13 @@ import "./App.css";
 import Header from "./components/header";
 import Form from "./components/form";
 import Btn from "./components/btn";
-import { createComboUnit , convertUnit, convertBetweenMs} from "./calculator.mjs";
+import { createComboUnits , convertUnit} from "./calculator.mjs";
 import unitMap from "./unitmap.mjs";
 import Result from "./components/results";
 
 function App() {
   document.title = "Penguin Converter";
 
-  const [result, setResult] = useState("so far nothing...");
   const [mw, setmw] = useState(1);
   const [valueToConvert, setValueToConvert] = useState("");
   const [mResult, setMResult] = useState(0);
@@ -26,28 +25,22 @@ function App() {
   };
 
   const calculateFnct = () => {
-    let comboUnit;
-    // to ckeck the measurement units
-    try {
-      comboUnit = createComboUnit();
-    } catch (error) {
-      alert(error);
-      return;
-    }
+    
     // to ckeck if the value is missing 
     if (!valueToConvert) {
       alert("Value missing");
       return;
     }
-    const conversionFactor = unitMap[comboUnit].value;
-    const useMWFactor = unitMap[comboUnit].value;
-
-    
-    convertBetweenMs(comboUnit)
-    ? setResult(convertUnit(valueToConvert, conversionFactor, false, mw, useMWFactor))
-    : setResult(convertUnit(valueToConvert, conversionFactor, true, mw, useMWFactor))
-
-
+    if (!isUnitM) { // we want to convert grams into malars
+      const [unitToM, unitToMm, unitToμm] = createComboUnits(true);
+      setMResult(convertUnit(valueToConvert, unitMap[unitToM].value, false, mw));
+      setMmResult(convertUnit(valueToConvert, unitMap[unitToMm].value, false, mw));
+      setUmResult(convertUnit(valueToConvert, unitMap[unitToμm].value, false, mw));
+    } else {
+      const [unitToMg, unitToG] = createComboUnits(false);
+      setMgResult(convertUnit(valueToConvert, unitMap[unitToMg].value, true, mw));
+      setGResult(convertUnit(valueToConvert, unitMap[unitToG].value, true, mw))
+    }
   };
 
   return (
@@ -66,9 +59,14 @@ function App() {
           <Btn text={"Calcola"} fnct={calculateFnct} />
         </div>
 
-        <div>
-          <Result isUnitM={isUnitM} resultArray={[mResult, mmResult, umResult]}/>
+        <div className="mb-4">
+          <Result
+            isUnitM={isUnitM}
+            mResults={[mResult, mmResult, umResult]}
+            gResults={[mgResult, gResult]}
+          />
         </div>
+
       </main>
     </>
   );

@@ -14,7 +14,7 @@ const unitMap = {
   "mg/ml-μm": { value: 1e6, useMW: true },
   "mg/ml-mm": { value: 1e3, useMW: true },
   "m-mg/ml": { value: 1, useMW: true },
-  "m-g/ml": { value: 1e3, useMW: true },
+  "m-g/ml": { value: 1000, useMW: true },
   "μm-mg/ml": { value: 1e6, useMW: true },
   "μm-g/ml": { value: 1e3, useMW: true },
   "mm-mg/ml": { value: 1e3, useMW: true },
