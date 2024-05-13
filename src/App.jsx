@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, createContext } from "react";
 import "./App.css";
 import Header from "./components/header";
 import Form from "./components/form";
@@ -6,6 +6,9 @@ import Btn from "./components/btn";
 import { createComboUnits , convertUnit} from "./calculator.mjs";
 import unitMap from "./unitmap.mjs";
 import Result from "./components/results";
+
+export const UnitContext = createContext();
+
 
 function App() {
   document.title = "Penguin Converter";
@@ -45,29 +48,30 @@ function App() {
 
   return (
     <>
-      <main className="text-xs sm:text-base">
-        <Header />
-        <p className="text-center text-lg md:text-2xl my-4">
-          Usa Questo sito per rendere il tuo lavoro più facile{" "}
-        </p>
-        <Form
-          valueUtils={[valueToConvert, setValueToConvert]}
-          mwUtils={[mw, setmw]}
-          unitUtils={[isUnitM, handleUnitChange]}
-        />
-        <div className="my-4 flex justify-center">
-          <Btn text={"Calcola"} fnct={calculateFnct} />
-        </div>
-
-        <div className="mb-4">
-          <Result
-            isUnitM={isUnitM}
-            mResults={[mResult, mmResult, umResult]}
-            gResults={[mgResult, gResult]}
+      <UnitContext.Provider value={{isUnitM, setIsUnitM}}>
+        <main className="text-xs sm:text-base">
+          <Header />
+          <p className="text-center px-4 sm:px-0 text-xs sm:text-lg md:text-2xl my-4">
+            Usa Questo sito per rendere il tuo lavoro più facile{" "}
+          </p>
+          <Form
+            valueUtils={[valueToConvert, setValueToConvert]}
+            mwUtils={[mw, setmw]}
+            unitUtils={[isUnitM, handleUnitChange]}
           />
-        </div>
+          <div className="my-4 flex justify-center">
+            <Btn text={"Calcola"} fnct={calculateFnct} />
+          </div>
 
-      </main>
+          <div className="mb-4 px-4">
+            <Result
+              mResults={[mResult, mmResult, umResult]}
+              gResults={[mgResult, gResult]}
+            />
+          </div>
+
+        </main>
+      </UnitContext.Provider>
     </>
   );
 }

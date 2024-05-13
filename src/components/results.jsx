@@ -1,4 +1,12 @@
-export default function Result({ isUnitM, mResults, gResults }) {
+import { useContext } from "react";
+import { UnitContext } from "../App";
+
+
+// eslint-disable-next-line react/prop-types
+export default function Result({ mResults, gResults }) {
+
+  const { isUnitM } = useContext(UnitContext)
+
   const [mResult, mmResult, umResult] = mResults;
   const [mgResult, gResult] = gResults;
 

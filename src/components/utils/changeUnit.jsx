@@ -1,8 +1,12 @@
-export default function ChangeUnit({ utils }) {
-  const [isUnitM, callBack] = utils;
+import { useContext } from "react";
+import { UnitContext } from "../../App";
+
+// eslint-disable-next-line react/prop-types
+export default function ChangeUnit() {
+  const {isUnitM, setIsUnitM} = useContext(UnitContext);
 
 	const handleClick = () => {
-		callBack(!isUnitM)
+		setIsUnitM(!isUnitM)
 	}
   return (
     <>
