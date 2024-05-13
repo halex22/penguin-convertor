@@ -25,9 +25,8 @@ export function convertUnit(input, conversionFactor, reverse, mwValue) {
   const result = reverse
   ? (input * mwValue) / conversionFactor // da M a massa
   : (input / mwValue) * conversionFactor; // da massa a M 
-  return result < 0.01
-  ? toScientificNotation(result)
-  : result;
+  return toScientificNotation(result);
+
 
 }
 
