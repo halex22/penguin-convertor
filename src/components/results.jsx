@@ -1,10 +1,11 @@
+// eslint-disable-next-line react/prop-types
 export default function Result({ isUnitM, mResults, gResults }) {
   const [mResult, mmResult, umResult] = mResults;
   const [mgResult, gResult] = gResults;
 
   return (
     <>
-      <p className="">The results are : </p>
+      <p className="text-center">I risultati sono  : </p>
 
       {isUnitM ? (
         <div className="flex justify-evenly mt-2">

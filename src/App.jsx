@@ -45,11 +45,13 @@ function App() {
 
   return (
     <>
-      <main className="text-xs sm:text-base">
+      <main className="text-xs sm:text-base m-4 rounded-2xl bg-white/95 shadow min-h-screen">
         <Header />
-        <p className="text-center text-lg md:text-2xl my-4">
-          Usa Questo sito per rendere il tuo lavoro più facile{" "}
-        </p>
+        <div className="px-4 my-4">
+          <p className="text-center text-base sm:text-lg md:text-2xl ">
+            Usa Questo sito per rendere il tuo lavoro più facile{" "}
+          </p>
+        </div>
         <Form
           valueUtils={[valueToConvert, setValueToConvert]}
           mwUtils={[mw, setmw]}

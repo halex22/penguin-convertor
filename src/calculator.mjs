@@ -1,8 +1,5 @@
-import unitMap from "./unitmap.mjs";
-
-
 export function createComboUnits(addMs, targetId = 'unitaPartenza') {
-  const inputUnit = document.getElementById("unitaPartenza").value;
+  const inputUnit = document.getElementById(targetId).value;
   if (addMs) {
     const unitToM = `${inputUnit}-m`.toLowerCase();
     const unitToMm = `${inputUnit}-mm`.toLowerCase();
@@ -28,7 +25,7 @@ export function convertUnit(input, conversionFactor, reverse, mwValue) {
   const result = reverse
   ? (input * mwValue) / conversionFactor // da M a massa
   : (input / mwValue) * conversionFactor; // da massa a M 
-  return result;
+  return toScientificNotation(result);
 
 }
 
