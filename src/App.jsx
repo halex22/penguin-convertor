@@ -48,7 +48,8 @@ function App() {
 
   return (
     <>
-      <main className="text-xs sm:text-base">
+    <UnitContext.Provider value={{isUnitM, setIsUnitM}}>
+      <main className="m-4 bg-white/95 rounded-xl min-h-screen text-xs sm:text-base">
         <Header />
         <p className="text-center text-lg md:text-2xl my-4">
           Usa Questo sito per rendere il tuo lavoro più facile{" "}
