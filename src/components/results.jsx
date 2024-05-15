@@ -12,7 +12,7 @@ export default function Result({ mResults, gResults }) {
 
   return (
     <>
-      <p className="">The results are : </p>
+      <p className="text-center">I risultati sono: </p>
 
       {isUnitM ? (
         <div className="flex justify-evenly mt-2">
