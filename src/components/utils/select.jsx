@@ -1,9 +1,10 @@
-import React from "react";
+import { useContext } from "react";
+import { UnitContext } from "../../App";
 
-
-export default function Select({ nameId, isUnitM }) {
+// eslint-disable-next-line react/prop-types
+export default function Select({ nameId }) {
    
-
+  const { isUnitM } = useContext(UnitContext)
 
   const gOptns = ["mg/mL", "g/mL"];
   

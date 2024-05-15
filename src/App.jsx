@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, createContext } from "react";
 import "./App.css";
 import Header from "./components/header";
 import Form from "./components/form";
@@ -6,6 +6,9 @@ import Btn from "./components/btn";
 import { createComboUnits , convertUnit} from "./calculator.mjs";
 import unitMap from "./unitmap.mjs";
 import Result from "./components/results";
+
+export const UnitContext = createContext();
+
 
 function App() {
   document.title = "Penguin Converter";
@@ -45,13 +48,11 @@ function App() {
 
   return (
     <>
-      <main className="text-xs sm:text-base m-4 rounded-2xl bg-white/95 shadow min-h-screen">
+      <main className="text-xs sm:text-base">
         <Header />
-        <div className="px-4 my-4">
-          <p className="text-center text-base sm:text-lg md:text-2xl ">
-            Usa Questo sito per rendere il tuo lavoro più facile{" "}
-          </p>
-        </div>
+        <p className="text-center text-lg md:text-2xl my-4">
+          Usa Questo sito per rendere il tuo lavoro più facile{" "}
+        </p>
         <Form
           valueUtils={[valueToConvert, setValueToConvert]}
           mwUtils={[mw, setmw]}
@@ -61,15 +62,15 @@ function App() {
           <Btn text={"Calcola"} fnct={calculateFnct} />
         </div>
 
-        <div className="mb-4">
-          <Result
-            isUnitM={isUnitM}
-            mResults={[mResult, mmResult, umResult]}
-            gResults={[mgResult, gResult]}
-          />
-        </div>
+          <div className="mb-4 px-4">
+            <Result
+              mResults={[mResult, mmResult, umResult]}
+              gResults={[mgResult, gResult]}
+            />
+          </div>
 
-      </main>
+        </main>
+      </UnitContext.Provider>
     </>
   );
 }

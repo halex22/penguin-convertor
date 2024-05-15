@@ -1,11 +1,18 @@
+import { useContext } from "react";
+import { UnitContext } from "../App";
+
+
 // eslint-disable-next-line react/prop-types
-export default function Result({ isUnitM, mResults, gResults }) {
+export default function Result({ mResults, gResults }) {
+
+  const { isUnitM } = useContext(UnitContext)
+
   const [mResult, mmResult, umResult] = mResults;
   const [mgResult, gResult] = gResults;
 
   return (
     <>
-      <p className="text-center">I risultati sono  : </p>
+      <p className="text-center">I risultati sono: </p>
 
       {isUnitM ? (
         <div className="flex justify-evenly mt-2">
